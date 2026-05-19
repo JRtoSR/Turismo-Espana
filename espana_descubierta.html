@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>España Descubierta — Voyagez autrement</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --terra: #C8553D;
+    --terra-light: #E8A0890;
+    --saffron: #D4942A;
+    --cream: #FDF6EE;
+    --cream-dark: #F3E8D6;
+    --olive: #5C6B2E;
+    --olive-light: #8A9E44;
+    --navy: #1E2B4A;
+    --navy-light: #2E3F6A;
+    --text: #2A1F1A;
+    --text-muted: #7A6A60;
+    --white: #FFFFFF;
+    --border: rgba(42,31,26,0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(253,246,238,0.94);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 3rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--terra);
+    letter-spacing: -0.02em;
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--navy); }
+  .nav-links {
+    display: flex; gap: 2rem; list-style: none;
+  }
+  .nav-links a {
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text);
+    text-decoration: none;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+  .nav-links a:hover { opacity: 1; color: var(--terra); }
+  .nav-quiz-btn {
+    background: var(--terra);
+    color: white;
+    border: none;
+    padding: 0.5rem 1.4rem;
+    border-radius: 2rem;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    text-decoration: none;
+  }
+  .nav-quiz-btn:hover { background: #A8432B; transform: scale(1.03); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 6rem 3rem 4rem;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 50%, rgba(200,85,61,0.18) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 70% at 20% 80%, rgba(92,107,46,0.15) 0%, transparent 50%),
+      var(--navy);
+  }
+  .hero-pattern {
+    position: absolute; inset: 0; opacity: 0.04;
+    background-image: repeating-linear-gradient(45deg, white 0, white 1px, transparent 0, transparent 50%);
+    background-size: 30px 30px;
+  }
+  .hero-content {
+    position: relative; z-index: 1;
+    max-width: 800px; text-align: center;
+  }
+  .hero-tag {
+    display: inline-block;
+    border: 1px solid rgba(255,255,255,0.3);
+    color: rgba(255,255,255,0.7);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.4rem 1.2rem;
+    border-radius: 2rem;
+    margin-bottom: 2rem;
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 7vw, 6rem);
+    font-weight: 300;
+    color: var(--cream);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.3rem;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: #E8B06A;
+  }
+  .hero-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    color: rgba(253,246,238,0.6);
+    font-style: italic;
+    margin-bottom: 2rem;
+  }
+  .hero p {
+    color: rgba(253,246,238,0.75);
+    font-size: 1.05rem;
+    max-width: 580px;
+    margin: 0 auto 2.5rem;
+  }
+  .hero-btns {
+    display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--terra);
+    color: white;
+    padding: 0.8rem 2rem;
+    border-radius: 3rem;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: #A8432B; transform: translateY(-2px); }
+  .btn-secondary {
+    border: 1px solid rgba(255,255,255,0.35);
+    color: rgba(255,255,255,0.85);
+    padding: 0.8rem 2rem;
+    border-radius: 3rem;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 0.95rem;
+    transition: background 0.2s;
+    display: inline-block;
+  }
+  .btn-secondary:hover { background: rgba(255,255,255,0.08); }
+  .hero-stats {
+    display: flex; gap: 3rem; justify-content: center;
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    flex-wrap: wrap;
+  }
+  .hero-stat { text-align: center; }
+  .hero-stat .num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: #E8B06A;
+    line-height: 1;
+  }
+  .hero-stat .label {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-top: 0.3rem;
+  }
+
+  /* SECTIONS */
+  section { padding: 5rem 3rem; }
+  .section-tag {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--navy);
+    margin-bottom: 1rem;
+  }
+  .section-lead {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    max-width: 640px;
+    line-height: 1.8;
+  }
+
+  /* PROBLÈME */
+  .problem-section {
+    background: var(--navy);
+    color: white;
+  }
+  .problem-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+    max-width: 1100px; margin: 0 auto;
+  }
+  .problem-section .section-title { color: var(--cream); }
+  .problem-section .section-lead { color: rgba(253,246,238,0.65); }
+  .problem-impacts {
+    display: flex; flex-direction: column; gap: 1.2rem;
+    margin-top: 2rem;
+  }
+  .impact-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 1.2rem 1.5rem;
+    display: flex; align-items: flex-start; gap: 1rem;
+  }
+  .impact-icon {
+    width: 40px; height: 40px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; flex-shrink: 0;
+  }
+  .impact-icon.env { background: rgba(92,107,46,0.35); }
+  .impact-icon.eco { background: rgba(212,148,42,0.3); }
+  .impact-icon.soc { background: rgba(200,85,61,0.3); }
+  .impact-card h4 { font-size: 0.9rem; font-weight: 500; color: var(--cream); margin-bottom: 0.3rem; }
+  .impact-card p { font-size: 0.83rem; color: rgba(255,255,255,0.55); line-height: 1.6; }
+  .stats-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  }
+  .stat-box {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+  }
+  .stat-box .big {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem;
+    color: #E8B06A;
+    font-weight: 600;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .stat-box .desc {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.5;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  /* REGIONS */
+  .regions-section { background: var(--cream); }
+  .regions-header {
+    max-width: 1100px; margin: 0 auto 3rem;
+    display: flex; justify-content: space-between; align-items: flex-end;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .filter-tabs {
+    display: flex; gap: 0.5rem; flex-wrap: wrap;
+  }
+  .filter-tab {
+    padding: 0.4rem 1rem;
+    border-radius: 2rem;
+    font-size: 0.82rem;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    background: white;
+    color: var(--text);
+    transition: all 0.2s;
+  }
+  .filter-tab.active, .filter-tab:hover {
+    background: var(--terra);
+    color: white;
+    border-color: var(--terra);
+  }
+  .regions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    max-width: 1100px; margin: 0 auto;
+  }
+  .region-card {
+    background: white;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s;
+    cursor: pointer;
+  }
+  .region-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(42,31,26,0.1); }
+  .region-card-top {
+    height: 130px;
+    display: flex; align-items: flex-end; justify-content: space-between;
+    padding: 1rem 1.25rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .region-card-body { padding: 1.2rem 1.25rem 1.4rem; }
+  .region-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: white;
+    position: relative; z-index: 1;
+    text-shadow: 0 1px 8px rgba(0,0,0,0.3);
+  }
+  .crowd-badge {
+    position: relative; z-index: 1;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    padding: 0.3rem 0.7rem;
+    border-radius: 2rem;
+    text-transform: uppercase;
+  }
+  .crowd-low { background: rgba(92,107,46,0.9); color: white; }
+  .crowd-med { background: rgba(212,148,42,0.9); color: white; }
+  .crowd-high { background: rgba(200,85,61,0.85); color: white; }
+  .region-desc {
+    font-size: 0.87rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+  .region-tags {
+    display: flex; gap: 0.4rem; flex-wrap: wrap;
+  }
+  .rtag {
+    font-size: 0.73rem;
+    padding: 0.25rem 0.65rem;
+    border-radius: 2rem;
+    background: var(--cream-dark);
+    color: var(--text);
+    font-weight: 500;
+  }
+  .best-time {
+    margin-top: 0.8rem;
+    font-size: 0.78rem;
+    color: var(--olive);
+    font-weight: 500;
+    display: flex; align-items: center; gap: 0.4rem;
+  }
+
+  /* BEST TIMES */
+  .best-times-section { background: var(--cream-dark); }
+  .best-times-inner { max-width: 900px; margin: 0 auto; }
+  .best-times-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem;
+  }
+  .city-card {
+    background: white;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .city-header {
+    padding: 1.5rem 1.75rem 1.2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .city-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--navy);
+  }
+  .city-tagline { font-size: 0.82rem; color: var(--text-muted); margin-top: 0.2rem; }
+  .city-months { padding: 1.2rem 1.75rem; }
+  .month-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.8rem; }
+  .months-row { display: flex; gap: 4px; flex-wrap: wrap; }
+  .month-pill {
+    font-size: 0.7rem;
+    font-weight: 500;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .month-ideal { background: #DFF0D8; color: #3B6D11; }
+  .month-ok { background: #FEF3C7; color: #854F0B; }
+  .month-avoid { background: #FCE8E8; color: #A32D2D; }
+  .city-alt { padding: 0 1.75rem 1.5rem; }
+  .alt-title { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.6rem; }
+  .alt-item { font-size: 0.85rem; color: var(--text); padding: 0.35rem 0; border-bottom: 1px solid var(--cream-dark); display: flex; justify-content: space-between; align-items: center; }
+  .alt-item:last-child { border-bottom: none; }
+  .alt-region { font-size: 0.75rem; color: var(--terra); font-weight: 500; }
+
+  /* GASTRO */
+  .gastro-section { background: var(--cream); }
+  .gastro-inner { max-width: 1100px; margin: 0 auto; }
+  .gastro-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.2rem;
+    margin-top: 3rem;
+  }
+  .dish-card {
+    background: white;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    padding: 1.3rem;
+    transition: transform 0.2s;
+  }
+  .dish-card:hover { transform: translateY(-3px); }
+  .dish-emoji { font-size: 2rem; margin-bottom: 0.7rem; }
+  .dish-name { font-weight: 600; font-size: 1rem; color: var(--navy); margin-bottom: 0.3rem; }
+  .dish-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 0.8rem; }
+  .dish-where {
+    font-size: 0.75rem;
+    background: var(--cream-dark);
+    color: var(--terra);
+    font-weight: 600;
+    padding: 0.25rem 0.7rem;
+    border-radius: 2rem;
+    display: inline-block;
+  }
+
+  /* SPORTS */
+  .sports-section { background: var(--navy); color: white; }
+  .sports-inner { max-width: 1100px; margin: 0 auto; }
+  .sports-section .section-title { color: var(--cream); }
+  .sports-section .section-lead { color: rgba(253,246,238,0.65); }
+  .sports-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.2rem;
+    margin-top: 3rem;
+  }
+  .sport-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px;
+    padding: 1.5rem;
+  }
+  .sport-icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
+  .sport-name { font-weight: 600; font-size: 1rem; color: var(--cream); margin-bottom: 0.3rem; }
+  .sport-desc { font-size: 0.82rem; color: rgba(255,255,255,0.55); line-height: 1.6; margin-bottom: 0.8rem; }
+  .sport-season {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.7rem;
+    border-radius: 2rem;
+    display: inline-block;
+  }
+  .season-winter { background: rgba(56,128,219,0.3); color: #85B7EB; }
+  .season-summer { background: rgba(212,148,42,0.3); color: #FAC775; }
+  .season-spring { background: rgba(92,107,46,0.3); color: #C0DD97; }
+  .season-all { background: rgba(200,85,61,0.3); color: #F0997B; }
+
+  /* QUIZ */
+  .quiz-section { background: var(--cream-dark); }
+  .quiz-inner { max-width: 720px; margin: 0 auto; }
+  .quiz-card {
+    background: white;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    padding: 2.5rem;
+    margin-top: 3rem;
+  }
+  .quiz-progress-bar {
+    height: 4px;
+    background: var(--cream-dark);
+    border-radius: 2px;
+    margin-bottom: 2rem;
+  }
+  .quiz-progress-fill {
+    height: 100%;
+    background: var(--terra);
+    border-radius: 2px;
+    transition: width 0.4s ease;
+  }
+  .quiz-question {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.45rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+    line-height: 1.35;
+  }
+  .quiz-hint { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1.8rem; }
+  .quiz-options {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+  .quiz-option {
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 0.9rem 1rem;
+    cursor: pointer;
+    transition: all 0.18s;
+    background: white;
+    text-align: left;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text);
+    display: flex; align-items: center; gap: 0.7rem;
+  }
+  .quiz-option:hover { border-color: var(--terra); background: #FDF0EC; }
+  .quiz-option.selected { border-color: var(--terra); background: #FDF0EC; color: var(--terra); font-weight: 500; }
+  .quiz-option-icon { font-size: 1.1rem; }
+  .quiz-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 1rem;
+  }
+  .quiz-step { font-size: 0.8rem; color: var(--text-muted); }
+  .quiz-next {
+    background: var(--terra); color: white;
+    border: none; border-radius: 3rem;
+    padding: 0.7rem 2rem; font-size: 0.9rem; font-weight: 500;
+    cursor: pointer; font-family: 'Outfit', sans-serif;
+    transition: background 0.2s, transform 0.15s;
+    opacity: 0.4; pointer-events: none;
+  }
+  .quiz-next.ready { opacity: 1; pointer-events: auto; }
+  .quiz-next.ready:hover { background: #A8432B; transform: translateY(-1px); }
+
+  /* RESULT */
+  .quiz-result { display: none; }
+  .result-region {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem; font-weight: 600;
+    color: var(--navy); margin-bottom: 0.5rem;
+  }
+  .result-tag {
+    display: inline-block;
+    background: var(--terra); color: white;
+    font-size: 0.78rem; font-weight: 600;
+    padding: 0.3rem 1rem; border-radius: 2rem;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+  .result-desc { font-size: 0.95rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem; }
+  .result-why {
+    background: var(--cream-dark); border-radius: 12px; padding: 1.2rem 1.4rem;
+    margin-bottom: 1.5rem;
+  }
+  .result-why h4 { font-size: 0.82rem; font-weight: 600; color: var(--text); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.6rem; }
+  .result-why ul { list-style: none; }
+  .result-why li { font-size: 0.87rem; color: var(--text-muted); padding: 0.2rem 0; padding-left: 1.2em; position: relative; }
+  .result-why li::before { content: "→"; position: absolute; left: 0; color: var(--terra); }
+  .quiz-restart {
+    background: transparent; color: var(--text-muted);
+    border: 1px solid var(--border); border-radius: 3rem;
+    padding: 0.6rem 1.4rem; font-size: 0.85rem;
+    cursor: pointer; font-family: 'Outfit', sans-serif;
+    transition: background 0.2s;
+  }
+  .quiz-restart:hover { background: var(--cream-dark); }
+
+  /* FOOTER */
+  footer {
+    background: var(--text);
+    color: rgba(255,255,255,0.6);
+    padding: 3rem;
+    text-align: center;
+  }
+  footer .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 0.5rem;
+  }
+  footer p { font-size: 0.82rem; line-height: 1.8; max-width: 500px; margin: 0 auto; }
+  footer .author { margin-top: 1.5rem; font-size: 0.75rem; opacity: 0.4; }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 4rem 1.5rem; }
+    .problem-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .best-times-grid { grid-template-columns: 1fr; }
+    .quiz-options { grid-template-columns: 1fr; }
+    .hero { padding: 5rem 1.5rem 3rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">España <span>Descubierta</span></a>
+  <ul class="nav-links">
+    <li><a href="#probleme">Le problème</a></li>
+    <li><a href="#regions">Régions</a></li>
+    <li><a href="#gastronomie">Gastronomie</a></li>
+    <li><a href="#sports">Activités</a></li>
+    <li><a href="#quiz">Quiz</a></li>
+  </ul>
+  <a class="nav-quiz-btn" href="#quiz">Trouver ma destination →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-content">
+    <div class="hero-tag">🇪🇸 Tourisme responsable en Espagne</div>
+    <h1>L'Espagne<br><em>autrement</em></h1>
+    <p class="hero-sub">Bien au-delà de Barcelone et Madrid</p>
+    <p>L'Espagne regorge de merveilles cachées. Découvrez des régions authentiques, évitez les périodes de suraffluence et contribuez à un tourisme plus équitable et durable.</p>
+    <div class="hero-btns">
+      <a href="#regions" class="btn-primary">Explorer les régions</a>
+      <a href="#quiz" class="btn-secondary">Mon quiz personnalisé</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="num">94M</div>
+        <div class="label">touristes en 2024</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">16%</div>
+        <div class="label">du PIB espagnol</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">17</div>
+        <div class="label">régions à découvrir</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">+30%</div>
+        <div class="label">loyers à Barcelone en 5 ans</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLÈME -->
+<section id="probleme" class="problem-section">
+  <div class="problem-grid">
+    <div>
+      <div class="section-tag">Le constat</div>
+      <h2 class="section-title">Le surtourisme :<br>un défi urgent</h2>
+      <p class="section-lead">L'Espagne est le 2e pays le plus visité au monde. Mais cette affluence massive se concentre sur quelques zones, créant des tensions sociales, environnementales et économiques profondes.</p>
+      <div class="stats-grid" style="margin-top:2rem">
+        <div class="stat-box">
+          <div class="big">8M+</div>
+          <div class="desc">touristes internationaux à Barcelone par an</div>
+        </div>
+        <div class="stat-box">
+          <div class="big">×100</div>
+          <div class="desc">écart touristique entre Barcelone et La Rioja</div>
+        </div>
+        <div class="stat-box">
+          <div class="big">2028</div>
+          <div class="desc">fin programmée des licences Airbnb à Barcelone</div>
+        </div>
+        <div class="stat-box">
+          <div class="big">2,8M</div>
+          <div class="desc">emplois dans le tourisme en Espagne</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="problem-impacts">
+        <div class="impact-card">
+          <div class="impact-icon env">🌿</div>
+          <div>
+            <h4>Impact environnemental</h4>
+            <p>Pollution, consommation excessive d'eau et d'énergie, dégradation des écosystèmes naturels dans les parcs et plages protégées.</p>
+          </div>
+        </div>
+        <div class="impact-card">
+          <div class="impact-icon eco">📊</div>
+          <div>
+            <h4>Impact économique</h4>
+            <p>Forte dépendance au tourisme (risque COVID-19), accentuation des inégalités entre régions, emplois saisonniers et précaires.</p>
+          </div>
+        </div>
+        <div class="impact-card">
+          <div class="impact-icon soc">🏘️</div>
+          <div>
+            <h4>Impact social</h4>
+            <p>Hausse des loyers de plus de 30% à Barcelone en cinq ans, perte d'identité locale, gentrification des quartiers populaires.</p>
+          </div>
+        </div>
+        <div class="impact-card" style="background:rgba(212,148,42,0.1); border-color:rgba(212,148,42,0.3)">
+          <div class="impact-icon" style="background:rgba(212,148,42,0.3)">💡</div>
+          <div>
+            <h4>La solution : redistribuer les flux</h4>
+            <p>Orienter les touristes vers les 17 régions espagnoles tout au long de l'année est la solution la plus durable et la plus efficace.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REGIONS -->
+<section id="regions" class="regions-section">
+  <div class="regions-header">
+    <div>
+      <div class="section-tag">17 communautés autonomes</div>
+      <h2 class="section-title">Explorez toute l'Espagne</h2>
+    </div>
+    <div class="filter-tabs">
+      <button class="filter-tab active" onclick="filterRegions('all',this)">Toutes</button>
+      <button class="filter-tab" onclick="filterRegions('low',this)">Peu touristiques</button>
+      <button class="filter-tab" onclick="filterRegions('nature',this)">Nature</button>
+      <button class="filter-tab" onclick="filterRegions('culture',this)">Culture</button>
+    </div>
+  </div>
+
+  <div class="regions-grid" id="regionsGrid">
+    <!-- Cards injected by JS -->
+  </div>
+</section>
+
+<!-- BEST TIMES -->
+<section id="best-times" class="best-times-section">
+  <div class="best-times-inner">
+    <div class="section-tag">Voyager au bon moment</div>
+    <h2 class="section-title">Si vous visitez les grandes villes</h2>
+    <p class="section-lead">Pour ceux qui souhaitent tout de même visiter Madrid ou Barcelone, voici les périodes idéales — et leurs équivalents moins fréquentés.</p>
+
+    <div class="best-times-grid">
+      <div class="city-card">
+        <div class="city-header">
+          <div class="city-name">Barcelone</div>
+          <div class="city-tagline">La ville la plus visitée d'Espagne — 8 millions de touristes/an</div>
+        </div>
+        <div class="city-months">
+          <div class="month-label">Calendrier recommandé</div>
+          <div class="months-row">
+            <span class="month-pill month-ok">Jan</span><span class="month-pill month-ok">Fév</span>
+            <span class="month-pill month-ideal">Mar</span><span class="month-pill month-ideal">Avr</span>
+            <span class="month-pill month-ok">Mai</span>
+            <span class="month-pill month-avoid">Juin</span><span class="month-pill month-avoid">Juil</span><span class="month-pill month-avoid">Août</span>
+            <span class="month-pill month-ideal">Sep</span><span class="month-pill month-ok">Oct</span>
+            <span class="month-pill month-ok">Nov</span><span class="month-pill month-ok">Déc</span>
+          </div>
+          <div style="margin-top:0.8rem; display:flex; gap:0.8rem; font-size:0.73rem; color:var(--text-muted)">
+            <span style="display:flex;align-items:center;gap:0.3rem"><span style="width:10px;height:10px;border-radius:2px;background:#DFF0D8;display:inline-block"></span>Idéal</span>
+            <span style="display:flex;align-items:center;gap:0.3rem"><span style="width:10px;height:10px;border-radius:2px;background:#FEF3C7;display:inline-block"></span>Acceptable</span>
+            <span style="display:flex;align-items:center;gap:0.3rem"><span style="width:10px;height:10px;border-radius:2px;background:#FCE8E8;display:inline-block"></span>À éviter</span>
+          </div>
+        </div>
+        <div class="city-alt">
+          <div class="alt-title">Alternatives moins fréquentées</div>
+          <div class="alt-item"><span>Sagrada Família → Cathédrale de Burgos</span><span class="alt-region">Castille-et-León</span></div>
+          <div class="alt-item"><span>Parc Güell → Jardins d'Aranjuez</span><span class="alt-region">Communauté de Madrid</span></div>
+          <div class="alt-item"><span>Las Ramblas → Vieille ville de Gérone</span><span class="alt-region">Catalogne</span></div>
+        </div>
+      </div>
+
+      <div class="city-card">
+        <div class="city-header">
+          <div class="city-name">Madrid</div>
+          <div class="city-tagline">La capitale — musées de classe mondiale, vie nocturne unique</div>
+        </div>
+        <div class="city-months">
+          <div class="month-label">Calendrier recommandé</div>
+          <div class="months-row">
+            <span class="month-pill month-ok">Jan</span><span class="month-pill month-ok">Fév</span>
+            <span class="month-pill month-ideal">Mar</span><span class="month-pill month-ideal">Avr</span><span class="month-pill month-ideal">Mai</span>
+            <span class="month-pill month-ok">Juin</span>
+            <span class="month-pill month-avoid">Juil</span><span class="month-pill month-avoid">Août</span>
+            <span class="month-pill month-ok">Sep</span><span class="month-pill month-ideal">Oct</span>
+            <span class="month-pill month-ok">Nov</span><span class="month-pill month-ok">Déc</span>
+          </div>
+          <div style="margin-top:0.8rem; display:flex; gap:0.8rem; font-size:0.73rem; color:var(--text-muted)">
+            <span style="display:flex;align-items:center;gap:0.3rem"><span style="width:10px;height:10px;border-radius:2px;background:#DFF0D8;display:inline-block"></span>Idéal</span>
+            <span style="display:flex;align-items:center;gap:0.3rem"><span style="width:10px;height:10px;border-radius:2px;background:#FEF3C7;display:inline-block"></span>Acceptable</span>
+            <span style="display:flex;align-items:center;gap:0.3rem"><span style="width:10px;height:10px;border-radius:2px;background:#FCE8E8;display:inline-block"></span>À éviter</span>
+          </div>
+        </div>
+        <div class="city-alt">
+          <div class="alt-title">Alternatives moins fréquentées</div>
+          <div class="alt-item"><span>Musée du Prado → Musée de Bilbao</span><span class="alt-region">Pays Basque</span></div>
+          <div class="alt-item"><span>Palais Royal → Alcazar de Ségovie</span><span class="alt-region">Castille-et-León</span></div>
+          <div class="alt-item"><span>El Retiro → Parc naturel de Cabañeros</span><span class="alt-region">Castille-La Manche</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GASTRONOMIE -->
+<section id="gastronomie" class="gastro-section">
+  <div class="gastro-inner">
+    <div class="section-tag">Tourisme culinaire</div>
+    <h2 class="section-title">Saveurs d'Espagne</h2>
+    <p class="section-lead">Chaque région possède ses spécialités uniques. Partir à la découverte de la gastronomie locale, c'est aussi voyager différemment.</p>
+    <div class="gastro-grid">
+      <div class="dish-card">
+        <div class="dish-emoji">🥘</div>
+        <div class="dish-name">Paella valenciana</div>
+        <div class="dish-desc">Riz safrané au poulet, lapin et haricots. Le plat emblématique d'Espagne, né à la Albufera.</div>
+        <span class="dish-where">📍 Communauté Valencienne</span>
+      </div>
+      <div class="dish-card">
+        <div class="dish-emoji">🫕</div>
+        <div class="dish-name">Pintxos</div>
+        <div class="dish-desc">Petites bouchées sur pain grillé, variées et créatives. La culture du bar basque dans toute sa splendeur.</div>
+        <span class="dish-where">📍 Pays Basque</span>
+      </div>
+      <div class="dish-card">
+        <div class="dish-emoji">🐙</div>
+        <div class="dish-name">Pulpo a la gallega</div>
+        <div class="dish-desc">Poulpe cuit et assaisonné à l'huile d'olive, paprika et gros sel. Un incontournable des fêtes galiciennes.</div>
+        <span class="dish-where">📍 Galice</span>
+      </div>
+      <div class="dish-card">
+        <div class="dish-emoji">🥩</div>
+        <div class="dish-name">Jamón ibérico</div>
+        <div class="dish-desc">Jambon affiné de porc ibérique élevé en plein air à la glandée. Une des charcuteries les plus réputées au monde.</div>
+        <span class="dish-where">📍 Estrémadure · Salamanque</span>
+      </div>
+      <div class="dish-card">
+        <div class="dish-emoji">🍷</div>
+        <div class="dish-name">Vin de La Rioja</div>
+        <div class="dish-desc">Tempranillo de renommée mondiale, élevé en fûts de chêne. La Rioja est à la viticulture ce que Bordeaux est à la France.</div>
+        <span class="dish-where">📍 La Rioja</span>
+      </div>
+      <div class="dish-card">
+        <div class="dish-emoji">🫙</div>
+        <div class="dish-name">Fabada asturiana</div>
+        <div class="dish-desc">Ragoût copieux de gros haricots blancs, chorizo, morcilla et lard fumé. Le plat réconfortant du Nord vert.</div>
+        <span class="dish-where">📍 Asturies</span>
+      </div>
+      <div class="dish-card">
+        <div class="dish-emoji">🥚</div>
+        <div class="dish-name">Tortilla española</div>
+        <div class="dish-desc">Omelette épaisse aux pommes de terre confites dans l'huile d'olive. Plat populaire dans toutes les régions.</div>
+        <span class="dish-where">📍 Partout en Espagne</span>
+      </div>
+      <div class="dish-card">
+        <div class="dish-emoji">🍦</div>
+        <div class="dish-name">Churros con chocolate</div>
+        <div class="dish-desc">Bâtonnets frits dorés trempés dans un chocolat épais et chaud. Le petit-déjeuner traditionnel de la capital.</div>
+        <span class="dish-where">📍 Madrid · Castille</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPORTS -->
+<section id="sports" class="sports-section">
+  <div class="sports-inner">
+    <div class="section-tag">Activités & sport</div>
+    <h2 class="section-title">L'Espagne en mouvement</h2>
+    <p class="section-lead">Des Pyrénées enneigées aux côtes atlantiques, l'Espagne offre des activités sportives pour tous les goûts — souvent loin des zones saturées.</p>
+    <div class="sports-grid">
+      <div class="sport-card">
+        <div class="sport-icon">⛷️</div>
+        <div class="sport-name">Ski & sports d'hiver</div>
+        <div class="sport-desc">Pyrénées aragonaises et catalanes, Sierra Nevada en Andalousie. Des domaines skiables bien équipés et moins chers qu'en France.</div>
+        <span class="sport-season season-winter">Décembre → Mars</span>
+      </div>
+      <div class="sport-card">
+        <div class="sport-icon">🏄</div>
+        <div class="sport-name">Surf</div>
+        <div class="sport-desc">La côte cantabrique (Mundaka, San Sebastián) offre des vagues parmi les meilleures d'Europe. Canaries pour surfer toute l'année.</div>
+        <span class="sport-season season-all">Toute l'année</span>
+      </div>
+      <div class="sport-card">
+        <div class="sport-icon">🥾</div>
+        <div class="sport-name">Randonnée & trekking</div>
+        <div class="sport-desc">Picos de Europa, Pyrénées, Ruta de la Plata. Le Camino de Santiago traverse toute l'Espagne du nord au sud.</div>
+        <span class="sport-season season-spring">Printemps · Automne</span>
+      </div>
+      <div class="sport-card">
+        <div class="sport-icon">⛵</div>
+        <div class="sport-name">Voile & nautisme</div>
+        <div class="sport-desc">Méditerranée (Baléares, Costa Brava), Atlantique (Galice), Canaries. La diversité des côtes espagnoles ravit tous les marins.</div>
+        <span class="sport-season season-summer">Avril → Octobre</span>
+      </div>
+      <div class="sport-card">
+        <div class="sport-icon">🚴</div>
+        <div class="sport-name">Cyclisme</div>
+        <div class="sport-desc">Routes de la Vuelta, Camino de Santiago à vélo, pistes vertes de La Rioja. L'Espagne est un paradis du cyclotourisme.</div>
+        <span class="sport-season season-spring">Printemps · Automne</span>
+      </div>
+      <div class="sport-card">
+        <div class="sport-icon">🤿</div>
+        <div class="sport-name">Plongée & snorkeling</div>
+        <div class="sport-desc">Parc naturel de Cabo de Gata (Murcie), Îles Medes (Catalogne), Canaries. Eaux cristallines et biodiversité marine exceptionnelle.</div>
+        <span class="sport-season season-summer">Juin → Septembre</span>
+      </div>
+      <div class="sport-card">
+        <div class="sport-icon">🧗</div>
+        <div class="sport-name">Escalade</div>
+        <div class="sport-desc">Montserrat, Riglos, El Chorro. Des falaises légendaires dans des cadres naturels grandioses, encore peu fréquentées.</div>
+        <span class="sport-season season-all">Toute l'année</span>
+      </div>
+      <div class="sport-card">
+        <div class="sport-icon">🏇</div>
+        <div class="sport-name">Équitation</div>
+        <div class="sport-desc">Andalousie, berceau du cheval espagnol pur sang (PRE). Randonnées équestres dans la Sierra Nevada ou les Bardenas.</div>
+        <span class="sport-season season-spring">Printemps · Automne</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section id="quiz" class="quiz-section">
+  <div class="quiz-inner">
+    <div class="section-tag">Recommandation personnalisée</div>
+    <h2 class="section-title">Quelle région vous correspond ?</h2>
+    <p class="section-lead">Répondez à 5 questions et découvrez la région espagnole idéale pour votre profil de voyageur — loin des foules et pleine de surprises.</p>
+
+    <div class="quiz-card" id="quizCard">
+      <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quizProgress" style="width:20%"></div></div>
+
+      <div id="quizQuestions">
+        <!-- rendered by JS -->
+      </div>
+
+      <div class="quiz-result" id="quizResult">
+        <div class="result-tag">Votre destination idéale</div>
+        <div class="result-region" id="resultRegion"></div>
+        <div class="result-desc" id="resultDesc"></div>
+        <div class="result-why">
+          <h4>Pourquoi cette région pour vous ?</h4>
+          <ul id="resultWhy"></ul>
+        </div>
+        <button class="quiz-restart" onclick="restartQuiz()">← Recommencer le quiz</button>
+      </div>
+
+      <div class="quiz-nav" id="quizNav">
+        <span class="quiz-step" id="quizStepLabel">Question 1 sur 5</span>
+        <button class="quiz-next" id="quizNextBtn" onclick="nextQuestion()">Suivant →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="logo">España Descubierta</div>
+  <p>Un projet pour un tourisme plus équitable et durable en Espagne. Découvrez toutes les régions, voyagez hors saison, et contribuez à préserver ce que vous aimez.</p>
+  <p class="author">Projet NSI — Lycée Marseilleveyre · Section internationale espagnole · 2024-2025</p>
+</footer>
+
+<script>
+const REGIONS = [
+  {
+    name: "La Rioja",
+    crowd: "low",
+    crowdLabel: "Peu fréquentée",
+    desc: "Capitale mondiale du vin Tempranillo, La Rioja mêle vignobles spectaculaires, villages médiévaux et gastronomie d'exception. Une région encore préservée du tourisme de masse.",
+    tags: ["🍷 Vin", "🏛️ Culture", "🚴 Cyclisme"],
+    bestTime: "Septembre–Octobre (vendanges)",
+    bg: "linear-gradient(135deg, #8B1A1A 0%, #C94040 60%, #A0522D 100%)",
+    categories: ["culture", "low"],
+  },
+  {
+    name: "Estrémadure",
+    crowd: "low",
+    crowdLabel: "Peu fréquentée",
+    desc: "Territoire sauvage aux ruines romaines de Mérida (classées UNESCO), aux châteaux médiévaux et à des paysages naturels immenses. Le jamón ibérico y est roi.",
+    tags: ["🏛️ Romain", "🐷 Gastronomie", "🌿 Nature"],
+    bestTime: "Mars–Mai · Septembre–Novembre",
+    bg: "linear-gradient(135deg, #5C4A1E 0%, #9B7E3C 60%, #6B8E23 100%)",
+    categories: ["culture", "nature", "low"],
+  },
+  {
+    name: "Asturies",
+    crowd: "low",
+    crowdLabel: "Peu fréquentée",
+    desc: "La 'Espagne verte' aux falaises atlantiques, pré-romanes préservées et cidre artisanal. Les Picos de Europa offrent parmi les plus beaux treks d'Europe.",
+    tags: ["⛰️ Randonnée", "🍶 Cidre", "🏖️ Côte verte"],
+    bestTime: "Juin–Septembre",
+    bg: "linear-gradient(135deg, #1A5276 0%, #2E86AB 50%, #2D6A4F 100%)",
+    categories: ["nature", "low"],
+  },
+  {
+    name: "Pays Basque",
+    crowd: "med",
+    crowdLabel: "Modérée",
+    desc: "Bilbao et son Guggenheim iconique, Saint-Sébastien et ses pintxos étoilés, une côte sauvage et une culture unique. La référence gastronomique de l'Espagne.",
+    tags: ["🎨 Art", "🍴 Gastronomie", "🏄 Surf"],
+    bestTime: "Mai–Juin · Septembre",
+    bg: "linear-gradient(135deg, #1A3A52 0%, #2C6B8E 50%, #1B6B3A 100%)",
+    categories: ["culture", "nature"],
+  },
+  {
+    name: "Galice",
+    crowd: "low",
+    crowdLabel: "Peu fréquentée",
+    desc: "Terre de pèlerins, de fjords (rias), de poulpe et de musique de gaïta. Santiago de Compostela est l'aboutissement du Camino, mais la côte et les îles valent tout autant.",
+    tags: ["⛪ Patrimoine", "🐙 Gastronomie", "⛵ Nautisme"],
+    bestTime: "Juin–Septembre",
+    bg: "linear-gradient(135deg, #2E4057 0%, #048A81 50%, #3D6B4F 100%)",
+    categories: ["culture", "nature", "low"],
+  },
+  {
+    name: "Navarre",
+    crowd: "low",
+    crowdLabel: "Peu fréquentée",
+    desc: "Au-delà des courses de taureaux de Pampelune, la Navarre cache des châteaux, des gorges spectaculaires comme Lumbier et le vignoble de Navarra.",
+    tags: ["🏰 Châteaux", "🍷 Vin", "🥾 Randonnée"],
+    bestTime: "Mai · Septembre–Octobre",
+    bg: "linear-gradient(135deg, #4A235A 0%, #8B4C96 50%, #C84B31 100%)",
+    categories: ["culture", "nature", "low"],
+  },
+  {
+    name: "Castille-et-León",
+    crowd: "low",
+    crowdLabel: "Peu fréquentée",
+    desc: "Léon, Burgos, Salamanque — une concentration de cathédrales gothiques et d'universités médiévales inégalée en Europe. Paysages de méseta grandioses.",
+    tags: ["⛪ Cathédrales", "🎓 Université", "🏛️ Médiéval"],
+    bestTime: "Avril–Juin · Septembre–Octobre",
+    bg: "linear-gradient(135deg, #3D1C02 0%, #8B4513 50%, #D4A056 100%)",
+    categories: ["culture", "low"],
+  },
+  {
+    name: "Aragon",
+    crowd: "low",
+    crowdLabel: "Peu fréquentée",
+    desc: "Les Pyrénées aragonaises, le Parc national d'Ordesa, et Saragosse avec sa basilique del Pilar. Un terrain de jeu nature et culture encore préservé.",
+    tags: ["🏔️ Pyrénées", "⛷️ Ski", "🏛️ Baroque"],
+    bestTime: "Hiver (ski) · Été (randonnée)",
+    bg: "linear-gradient(135deg, #1B2A4A 0%, #3D6B93 50%, #4A7C59 100%)",
+    categories: ["nature", "low"],
+  },
+  {
+    name: "Murcie",
+    crowd: "low",
+    crowdLabel: "Peu fréquentée",
+    desc: "La moins connue des côtes méditerranéennes. Cartagène romaine, Cabo de Gata, et une cuisine unique — piments de piquillo, riz et fruits de mer frais.",
+    tags: ["🏖️ Plages", "🏛️ Romain", "🍋 Gastronomie"],
+    bestTime: "Avril–Juin · Septembre–Octobre",
+    bg: "linear-gradient(135deg, #7B2D00 0%, #C0530C 50%, #E8A020 100%)",
+    categories: ["nature", "culture", "low"],
+  },
+  {
+    name: "Valence",
+    crowd: "med",
+    crowdLabel: "Modérée",
+    desc: "Berceau de la paella, architecturee avant-gardiste (Cité des Arts) et plages accessibles depuis la ville. La troisième ville d'Espagne, dynamique et abordable.",
+    tags: ["🥘 Paella", "🎨 Architecture", "🌊 Plages"],
+    bestTime: "Mars–Juin · Septembre–Novembre",
+    bg: "linear-gradient(135deg, #B84A00 0%, #E87820 50%, #D4A020 100%)",
+    categories: ["culture", "nature"],
+  },
+  {
+    name: "Andalousie",
+    crowd: "high",
+    crowdLabel: "Très fréquentée",
+    desc: "Grenade, Séville, Cordoue — l'héritage maure le plus spectaculaire d'Europe. À éviter en juillet-août, magnifique au printemps avec les fleurs d'oranger.",
+    tags: ["🏰 Alhambra", "💃 Flamenco", "☀️ Soleil"],
+    bestTime: "Mars–Mai · Octobre–Novembre",
+    bg: "linear-gradient(135deg, #7B1010 0%, #C04030 50%, #E87820 100%)",
+    categories: ["culture"],
+  },
+  {
+    name: "Cantabrie",
+    crowd: "low",
+    crowdLabel: "Peu fréquentée",
+    desc: "Grottes préhistoriques d'Altamira, Picos de Europa, plages sauvages et Santander élégante. Une petite région qui concentre une richesse patrimoniale et naturelle extraordinaire.",
+    tags: ["🦣 Préhistoire", "⛰️ Montagne", "🏖️ Plages"],
+    bestTime: "Juin–Septembre",
+    bg: "linear-gradient(135deg, #0B3D2E 0%, #1B7A5A 50%, #3A8CC0 100%)",
+    categories: ["nature", "culture", "low"],
+  },
+];
+
+function filterRegions(cat, btn) {
+  document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  renderRegions(cat);
+}
+
+function renderRegions(filter='all') {
+  const grid = document.getElementById('regionsGrid');
+  const filtered = filter === 'all' ? REGIONS : REGIONS.filter(r => r.categories.includes(filter));
+  grid.innerHTML = filtered.map(r => `
+    <div class="region-card" data-cats="${r.categories.join(' ')}">
+      <div class="region-card-top" style="background:${r.bg}">
+        <div class="region-name">${r.name}</div>
+        <div class="crowd-badge ${r.crowd === 'low' ? 'crowd-low' : r.crowd === 'med' ? 'crowd-med' : 'crowd-high'}">${r.crowdLabel}</div>
+      </div>
+      <div class="region-card-body">
+        <p class="region-desc">${r.desc}</p>
+        <div class="region-tags">${r.tags.map(t => `<span class="rtag">${t}</span>`).join('')}</div>
+        <div class="best-time">🗓️ Meilleure période : ${r.bestTime}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+renderRegions();
+
+// QUIZ
+const questions = [
+  {
+    q: "Quel type de paysage vous attire le plus ?",
+    hint: "Choisissez l'environnement qui vous fait rêver",
+    options: [
+      { icon: "🏔️", label: "Montagnes & altitude", key: "mountain" },
+      { icon: "🌊", label: "Côte & plages", key: "coast" },
+      { icon: "🌾", label: "Campagne & vignobles", key: "country" },
+      { icon: "🏙️", label: "Villes & architecture", key: "city" },
+    ]
+  },
+  {
+    q: "Quel est votre centre d'intérêt principal ?",
+    hint: "Ce qui guide vos choix de visite",
+    options: [
+      { icon: "🏛️", label: "Culture & histoire", key: "culture" },
+      { icon: "🍴", label: "Gastronomie & vin", key: "food" },
+      { icon: "🌿", label: "Nature & outdoor", key: "nature" },
+      { icon: "😌", label: "Détente & bien-être", key: "relax" },
+    ]
+  },
+  {
+    q: "Quelle saison pour votre voyage ?",
+    hint: "La saison influe beaucoup sur l'expérience",
+    options: [
+      { icon: "🌸", label: "Printemps", key: "spring" },
+      { icon: "☀️", label: "Été", key: "summer" },
+      { icon: "🍂", label: "Automne", key: "autumn" },
+      { icon: "❄️", label: "Hiver", key: "winter" },
+    ]
+  },
+  {
+    q: "Comment voyagez-vous ?",
+    hint: "Votre style de voyage idéal",
+    options: [
+      { icon: "🎒", label: "Aventure & découverte", key: "adventure" },
+      { icon: "🛏️", label: "Tranquillement, sans pression", key: "slow" },
+      { icon: "💑", label: "En couple, romantique", key: "romantic" },
+      { icon: "👨‍👩‍👧", label: "En famille avec enfants", key: "family" },
+    ]
+  },
+  {
+    q: "Votre rapport aux foules touristiques ?",
+    hint: "Soyez honnête — cela change tout !",
+    options: [
+      { icon: "🙌", label: "J'aime l'animation", key: "crowds_ok" },
+      { icon: "🤫", label: "Je préfère la tranquillité", key: "quiet" },
+      { icon: "⚖️", label: "Un peu des deux", key: "mixed" },
+      { icon: "🧭", label: "Je veux de l'authentique", key: "authentic" },
+    ]
+  }
+];
+
+const recommendations = {
+  default: {
+    region: "La Rioja",
+    desc: "La Rioja est une découverte que peu de voyageurs étrangers ont encore faite. Cette petite région au cœur du pays cache l'un des plus beaux vignobles d'Europe, des villages médiévaux préservés et une gastronomie raffinée. Un joyau discret qui ne demande qu'à être révélé.",
+    why: ["Région très peu fréquentée par les touristes internationaux", "Vignobles Tempranillo de réputation mondiale", "Villages médiévaux authentiques comme Haro ou Logroño", "Excellent rapport qualité-prix hébergements et restaurants", "Idéale pour les cyclotouristes et randonneurs"]
+  },
+  mountain_nature: {
+    region: "Asturies",
+    desc: "Les Asturies — 'le Paradis naturel' — est faite pour vous. Les Picos de Europa, les fjords atlantiques (rias) et une faune sauvage préservée attendent les amoureux de nature. Et l'air y est chargé du parfum du cidre artisanal.",
+    why: ["Picos de Europa, l'un des plus beaux parcs nationaux d'Espagne", "Côte verte et falaises atlantiques spectaculaires", "Région très peu touristique et parfaitement authentique", "Idéale pour la randonnée, escalade et sports nautiques", "Gastronomie unique : fabada, fromages, cidre"]
+  },
+  coast_summer: {
+    region: "Murcie",
+    desc: "La Murcie est la perle cachée de la Méditerranée espagnole. Des eaux cristallines, des criques sauvages et Cartagène l'antique — sans la foule des Baléares. Un été méditerranéen comme il se doit.",
+    why: ["Moins touristique que les Baléares ou la Costa Brava", "Mer Méditerranée, eaux chaudes et cristallines", "Cabo de Gata, parc naturel marin exceptionnel", "Cartagène romaine, site archéologique majeur", "Cuisine fraîche aux fruits de mer et agrumes"]
+  },
+  food_country: {
+    region: "Pays Basque",
+    desc: "Pour un voyage centré sur la gastronomie, nulle autre destination en Espagne. Le Pays Basque compte le plus grand nombre de restaurants étoilés Michelin par habitant au monde. Et les pintxos à 1,50€ sont tout aussi remarquables.",
+    why: ["Capitale gastronomique mondiale avec San Sebastián", "Culture des pintxos et des bars uniques en Europe", "Guggenheim de Bilbao, chef-d'œuvre architectural", "Côte cantabrique et surf à Mundaka", "Culture basque authentique et fierté locale palpable"]
+  },
+  culture_city: {
+    region: "Castille-et-León",
+    desc: "Pour qui veut plonger dans l'histoire profonde de l'Espagne, la Castille-et-León est la région idéale. Salamanque, Burgos, Ségovie, Léon — chaque ville cache une cathédrale, une université ou un château de légende.",
+    why: ["Plus grande concentration de patrimoine mondial UNESCO", "Salamanque, la plus belle ville universitaire d'Espagne", "Cathédrales gothiques parmi les plus impressionnantes d'Europe", "Tourisme culturel sans les foules estivales", "Gastronomie castillane : lechazo, cocido, fromages"]
+  },
+  winter_mountain: {
+    region: "Aragon",
+    desc: "L'Aragon est le choix évident pour les sports d'hiver hors des circuits classiques. Les Pyrénées aragonaises offrent des domaines skiables excellents, moins chers et moins bondés que les stations françaises.",
+    why: ["Candanchú, Formigal : domaines skiables bien équipés", "Parc national d'Ordesa et Monte Perdido (UNESCO)", "Saragosse, ville baroque méconnue et dynamique", "Gastronomie aragonaise robuste et savoureuse", "Accès facile depuis la France par l'autoroute"]
+  },
+  relax_romantic: {
+    region: "Galice",
+    desc: "La Galice, verte et mystérieuse, est un cadre romantique incomparable. Les rias (fjords atlantiques), les îles Cíes aux eaux turquoise et Santiago de Compostela créent une ambiance hors du temps, douce et authentique.",
+    why: ["Îles Cíes, parmi les plus belles plages d'Espagne", "Santiago de Compostela, ville médiévale envoûtante", "Paysages verts et vallonnés, doux et apaisants", "Gastronomie marine d'exception", "Tourisme peu développé, calme et abordable"]
+  }
+};
+
+let answers = [];
+let current = 0;
+
+function renderQuestion() {
+  const q = questions[current];
+  const progress = ((current + 1) / questions.length) * 100;
+  document.getElementById('quizProgress').style.width = progress + '%';
+  document.getElementById('quizStepLabel').innerText = `Question ${current+1} sur ${questions.length}`;
+  document.getElementById('quizNextBtn').classList.remove('ready');
+
+  document.getElementById('quizQuestions').innerHTML = `
+    <div class="quiz-question">${q.q}</div>
+    <p class="quiz-hint">${q.hint}</p>
+    <div class="quiz-options">
+      ${q.options.map((o,i) => `
+        <button class="quiz-option" onclick="selectOption(${i}, '${o.key}', this)">
+          <span class="quiz-option-icon">${o.icon}</span>
+          <span>${o.label}</span>
+        </button>
+      `).join('')}
+    </div>
+  `;
+}
+
+function selectOption(idx, key, btn) {
+  document.querySelectorAll('.quiz-option').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  answers[current] = key;
+  document.getElementById('quizNextBtn').classList.add('ready');
+}
+
+function nextQuestion() {
+  if (!answers[current]) return;
+  current++;
+  if (current >= questions.length) {
+    showResult();
+  } else {
+    renderQuestion();
+  }
+}
+
+function showResult() {
+  document.getElementById('quizQuestions').style.display = 'none';
+  document.getElementById('quizNav').style.display = 'none';
+  document.getElementById('quizProgress').style.width = '100%';
+
+  let rec = recommendations.default;
+
+  if (answers.includes('mountain') && answers.includes('nature')) rec = recommendations.mountain_nature;
+  else if (answers.includes('mountain') && answers.includes('winter')) rec = recommendations.winter_mountain;
+  else if (answers.includes('coast') && answers.includes('summer')) rec = recommendations.coast_summer;
+  else if (answers.includes('food') || answers.includes('country')) rec = recommendations.food_country;
+  else if (answers.includes('culture') || answers.includes('city')) rec = recommendations.culture_city;
+  else if (answers.includes('relax') || answers.includes('romantic')) rec = recommendations.relax_romantic;
+  else if (answers.includes('quiet') || answers.includes('authentic')) rec = recommendations.default;
+
+  document.getElementById('resultRegion').innerText = rec.region;
+  document.getElementById('resultDesc').innerText = rec.desc;
+  document.getElementById('resultWhy').innerHTML = rec.why.map(w => `<li>${w}</li>`).join('');
+
+  const result = document.getElementById('quizResult');
+  result.style.display = 'block';
+}
+
+function restartQuiz() {
+  answers = [];
+  current = 0;
+  document.getElementById('quizResult').style.display = 'none';
+  document.getElementById('quizQuestions').style.display = 'block';
+  document.getElementById('quizNav').style.display = 'flex';
+  renderQuestion();
+}
+
+renderQuestion();
+</script>
+</body>
+</html>
